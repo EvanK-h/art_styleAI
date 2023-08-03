@@ -21,13 +21,13 @@ This model is a re-trained ResNet-18 model which was created on a Jetson Nano an
 ```
 5. Navigate to the models directory and create a new directory called art_styles:
 ```
-   $ cd ../models
+   $ cd models
    $ mkdir art_styles
 ```
 6. Upload the model_best.pth.tar file to the art_styles directory in the models directory and upload the art_styles folder to the data directory.
 7. Navigate to the jetson-inference directory and run the docker:
 ```
-   $ cd ../../../
+   $ cd ../../../../
    $ ./docker/run.sh
 ```
 8. Navigate to the classification directory again:
