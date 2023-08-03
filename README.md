@@ -19,47 +19,42 @@ This model is a re-trained ResNet-18 model which was created on a Jetson Nano an
    $ mkdir data
    $ mkdir models
 ```
-5. Navigate to the data directory and create a new directory called art_styles:
-```
-   $ cd data
-   $ mkdir art_styles
-```
-6. Navigate to the models directory and create a new directory called art_styles:
+5. Navigate to the models directory and create a new directory called art_styles:
 ```
    $ cd ../models
    $ mkdir art_styles
 ```
-7. Upload the model_best.pth.tar file to the art_styles directory in models and upload the art_styles folder to the art_styles directory in data.
-8. Navigate to the jetson-inference directory and run the docker:
+6. Upload the model_best.pth.tar file to the art_styles directory in the models directory and upload the art_styles folder to the data directory.
+7. Navigate to the jetson-inference directory and run the docker:
 ```
    $ cd ../../../
    $ ./docker/run.sh
 ```
-9. Navigate to the classification directory again:
+8. Navigate to the classification directory again:
 ```
    $ cd python/training/classification
 ```
-10. Export the model to ONNX:
+9. Export the model to ONNX:
 ```
    $ python3 onnx_export.py --model-dir=models/art_styles
 ```
-11. Exit the docker and navigate to the classification directory again:
+10. Exit the docker and navigate to the classification directory again:
 ```
    $ exit
    $ cd python/training/classification
 ```
-12. Set the NET and DATASET variables:
+11. Set the NET and DATASET variables:
 ```
    $ NET=models/art_styles
    $ DATASET=data/art_styles
 ```
-13. Run this command to see how it operates on an image from the academic folder:
+12. Run this command to see how it operates on an image from the academic folder:
 ```
    $ imagenet.py --model=$NET/resnet18.onnx --input_blob=input_0 --output_blob=output_0 --labels=$DATASET/labels.txt $DATASET/test/academic/232332.jpg academic.jpg
 ```
-14. Open the new image in VSCode to see how the model works or scroll up to see how the model classified the image if you are using a regular terminal.
-15. To run the model on a different image, change this section of the code: /academic/232332.jpg academic.jpg
-16. The first 'academic' refers to which set of images in the test folder you are choosing from. '232332.jpg' is the image you are classifying in the set of images you chose. Finally, 'academic.jpg' is the name of the image that will be exported once the model finishes classifying it.
+13. Open the new image in VSCode to see how the model works or scroll up to see how the model classified the image if you are using a regular terminal.
+14. To run the model on a different image, change this section of the code: /academic/232332.jpg academic.jpg
+15. The first 'academic' refers to which set of images in the test folder you are choosing from. '232332.jpg' is the image you are classifying in the set of images you chose. Finally, 'academic.jpg' is the name of the image that will be exported once the model finishes classifying it.
 
 
 
